@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brandi: Action Plan | Tiger Eye Oracle</title>
+<style>
+:root {
+  --bg: #17110C;
+  --panel: #251B12;
+  --panel-2: #2C2015;
+  --tx: #E8DCC9;
+  --tx-strong: #F6EEDF;
+  --tx-soft: #A8937A;
+  --amber: #D99A3D;
+  --amber-deep: #B0762A;
+  --gold: #E3B95F;
+  --honey: #C98F3A;
+  --line: rgba(217, 154, 61, .22);
+  --line-strong: rgba(217, 154, 61, .45);
+  --serif: 'Palatino Linotype', Palatino, Georgia, serif;
+  --sans: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'Consolas', 'Courier New', monospace;
+  color-scheme: dark only;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--tx);
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse 70% 45% at 15% 0%, rgba(217,154,61,.07), transparent 70%),
+    radial-gradient(ellipse 55% 40% at 100% 100%, rgba(176,118,42,.06), transparent 70%);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap {
+  position: relative;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 56px 24px 90px;
+}
+
+/* Tiger-eye band */
+.band {
+  height: 5px; border-radius: 3px; margin: 46px 0; opacity: .85;
+  background: linear-gradient(90deg,
+    #3A2712 0%,#B0762A 12%,#E3B95F 22%,#8A5B1F 34%,
+    #D99A3D 48%,#4A3418 60%,#C98F3A 72%,#E3B95F 84%,#3A2712 100%);
+}
+
+/* Header */
+.page-header { text-align: center; margin-bottom: 18px; }
+.page-header .eyebrow {
+  font-family: var(--mono); font-size: .72rem;
+  letter-spacing: .3em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: 16px;
+}
+.page-header h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.1rem, 5vw, 3rem);
+  font-weight: 600; color: var(--tx-strong);
+  line-height: 1.12; letter-spacing: .015em; margin-bottom: 12px;
+}
+.page-header .sub { font-size: .95rem; color: var(--tx-soft); }
+.page-header .moon-mark {
+  font-size: 1.3rem; color: var(--gold);
+  margin-top: 18px; letter-spacing: .6em;
+}
+
+.priority {
+  background: linear-gradient(135deg, rgba(217,154,61,.14), rgba(176,118,42,.07));
+  border: 1px solid var(--line-strong); border-radius: 12px;
+  padding: 22px 26px; margin: 40px 0 8px; text-align: center;
+}
+.priority .label {
+  font-family: var(--mono); font-size: .7rem;
+  letter-spacing: .28em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 8px;
+}
+.priority p { color: var(--tx-strong); font-size: 1.06rem; }
+.priority strong { color: var(--gold); }
+
+/* Sections */
+section { margin: 46px 0; }
+h2 {
+  font-family: var(--serif); font-size: 1.65rem;
+  font-weight: 600; color: var(--gold);
+  margin-bottom: 6px; letter-spacing: .01em;
+}
+h3 {
+  font-family: var(--serif); font-size: 1.22rem;
+  font-weight: 600; color: var(--tx-strong);
+  margin: 30px 0 12px;
+}
+.section-note { color: var(--tx-soft); font-size: .93rem; margin-bottom: 20px; }
+
+/* Cards */
+.card {
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px; padding: 24px 28px; margin: 18px 0;
+}
+
+/* Plain bullet lists */
+ul.plain { list-style: none; }
+ul.plain li { padding: 8px 0 8px 28px; position: relative; }
+ul.plain li::before {
+  content: "\2726"; position: absolute; left: 2px;
+  color: var(--amber); font-size: .8rem; top: 12px;
+}
+ul.plain strong { color: var(--tx-strong); }
+
+/* Checklist (true action items) */
+.checklist { list-style: none; }
+.check-item {
+  position: relative;
+  padding: 14px 0 14px 48px;
+  border-bottom: 1px solid rgba(217,154,61,.1);
+}
+.check-item:last-child { border-bottom: none; }
+.check-item input[type="checkbox"] {
+  appearance: none; -webkit-appearance: none;
+  position: absolute; left: 0; top: 16px;
+  width: 28px; height: 28px; border-radius: 6px;
+  background: rgba(217,154,61,.08);
+  border: 1.5px solid var(--line-strong);
+  cursor: pointer; transition: all .2s ease;
+}
+.check-item input[type="checkbox"]:hover {
+  background: rgba(217,154,61,.18); border-color: var(--amber);
+}
+.check-item input[type="checkbox"]:checked {
+  background: rgba(217,154,61,.22); border-color: var(--gold);
+}
+.check-item input[type="checkbox"]:checked::after {
+  content: "\2713"; display: flex;
+  align-items: center; justify-content: center;
+  width: 100%; height: 100%;
+  color: var(--gold); font-size: .9rem; font-weight: 700;
+}
+.check-item .check-text { display: block; }
+.check-item input[type="checkbox"]:checked ~ .check-text {
+  opacity: .45; text-decoration: line-through;
+  text-decoration-color: var(--amber-deep);
+  text-decoration-thickness: 1.5px;
+}
+.check-item strong { color: var(--tx-strong); }
+
+/* Tips (advice, no checkboxes) */
+ul.tips { list-style: none; }
+ul.tips li {
+  padding: 14px 0 14px 28px;
+  position: relative;
+  border-bottom: 1px solid rgba(217,154,61,.08);
+}
+ul.tips li:last-child { border-bottom: none; }
+ul.tips li::before {
+  content: "\25C8"; position: absolute; left: 2px;
+  color: var(--amber-deep); font-size: .7rem; top: 19px;
+}
+ul.tips strong { color: var(--tx-strong); }
+ul.tips .sub-note {
+  display: block; color: var(--tx-soft);
+  font-size: .92rem; margin-top: 3px;
+}
+
+/* Copy blocks */
+.copy-wrap { position: relative; margin: 16px 0 26px; }
+.copy-block {
+  background: var(--panel-2);
+  border-left: 3px solid var(--amber);
+  border-radius: 0 12px 12px 0;
+  padding: 24px 28px;
+  font-family: var(--serif); font-size: 1.04rem; line-height: 1.75;
+}
+.copy-block p { margin-bottom: 14px; }
+.copy-block p:last-child { margin-bottom: 0; }
+.copy-block strong { color: var(--gold); font-weight: 600; }
+.copy-block ul { list-style: none; margin: 14px 0; }
+.copy-block ul li { padding: 7px 0 7px 26px; position: relative; }
+.copy-block ul li::before {
+  content: "\2726"; position: absolute; left: 0; top: 8px;
+  color: var(--amber); font-size: .8rem;
+}
+.copy-btn {
+  display: block;
+  margin: 12px 0 0 auto;
+  background: rgba(217,154,61,.15);
+  border: 1px solid var(--line-strong);
+  color: var(--amber); font-family: var(--mono);
+  font-size: .7rem; letter-spacing: .12em;
+  text-transform: uppercase; padding: 7px 18px;
+  border-radius: 6px; cursor: pointer; transition: all .2s ease;
+}
+.copy-btn:hover { background: rgba(217,154,61,.3); color: var(--gold); }
+.copy-btn.copied { background: rgba(217,154,61,.25); color: var(--gold); border-color: var(--gold); }
+
+.tagline {
+  text-align: center; font-family: var(--serif);
+  font-size: clamp(1.3rem, 3.4vw, 1.7rem);
+  color: var(--gold); padding: 26px 20px; margin: 20px 0;
+  border: 1px solid var(--line-strong); border-radius: 12px;
+  background: radial-gradient(ellipse 80% 100% at 50% 0%, rgba(217,154,61,.1), transparent 70%);
+}
+.delivery-note {
+  font-size: .88rem; color: var(--tx-soft);
+  font-style: italic; margin: -12px 0 26px; padding-left: 6px;
+}
+.format-line {
+  font-family: var(--mono); font-size: .82rem;
+  letter-spacing: .08em; color: var(--amber); margin-bottom: 18px;
+}
+
+/* Table */
+table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: .95rem; }
+th {
+  font-family: var(--mono); font-size: .7rem;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--amber); text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line-strong);
+}
+td {
+  padding: 12px 14px; border-bottom: 1px solid rgba(217,154,61,.1); vertical-align: top;
+}
+td:first-child { color: var(--tx-strong); font-weight: 600; }
+.table-scroll { overflow-x: auto; }
+
+/* Footer */
+.footer { text-align: center; margin-top: 70px; color: var(--tx-soft); font-size: .85rem; }
+.footer .moon-mark { color: var(--gold); letter-spacing: .6em; margin-bottom: 10px; font-size: 1.1rem; }
+
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .card, .copy-block { padding: 20px 18px; }
+  .check-item { padding-left: 42px; }
+  .copy-btn { padding: 5px 10px; font-size: .65rem; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="page-header">
+    <div class="eyebrow">Tiger Eye Oracle &middot; Post-Session Action Plan</div>
+    <h1>Brandi's Action Plan</h1>
+    <div class="sub">Session with Sunny &middot; July 13, 2026 &middot; @tigereyeoracle</div>
+    <div class="moon-mark">&#9789; &#10022; &#9790;</div>
+  </header>
+
+  <div class="priority">
+    <div class="label">Priority One</div>
+    <p><strong>Fill the AstroMagick membership.</strong> One-to-many delivery fits your schedule right now. Every step below feeds it.</p>
+  </div>
+
+  <div class="band"></div>
+
+  <!-- REPLAY & ASSETS -->
+  <section>
+    <h2>Replay &amp; Assets</h2>
+    <div class="card">
+      <ul class="plain">
+        <li><strong>Session replay</strong> &ndash; <a href="https://www.youtube.com/watch?v=E6kAzYJB_iM" style="color:var(--amber);" target="_blank">Watch on YouTube</a></li>
+        <li><strong>Freebie &amp; journal mockup templates</strong> &ndash; <a href="https://canva.link/off9dvjk2ykyc3i" style="color:var(--amber);" target="_blank">Canva mockups</a></li>
+        <li><strong>10 social media posts</strong> &ndash; coming soon</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="band"></div>
+
+  <!-- CHECKLIST -->
+  <section>
+    <h2>Your Checklist</h2>
+    <ul class="checklist">
+      <li class="check-item">
+        <input type="checkbox">
+        <span class="check-text"><strong>Copy your new messaging into ChatGPT.</strong> Update it with your spark statement, transformation statement, session description, membership description, and ideal client so it writes from your real positioning going forward.</span>
+      </li>
+      <li class="check-item">
+        <input type="checkbox">
+        <span class="check-text"><strong>Rename your Linktree links:</strong> "AstroMagick Membership" and "The Lunar Compass Session."</span>
+      </li>
+      <li class="check-item">
+        <input type="checkbox">
+        <span class="check-text"><strong>Make AstroMagick the hero of your website:</strong> benefit bullets at the top of the page with a "Join AstroMagick for $10/mo" button directly underneath.</span>
+      </li>
+      <li class="check-item">
+        <input type="checkbox">
+        <span class="check-text"><strong>Create a membership mockup.</strong> Compose a week's worth of deliverables into one beautiful image, feature list underneath, button says "Join AstroMagick."</span>
+      </li>
+      <li class="check-item">
+        <input type="checkbox">
+        <span class="check-text"><strong>Add a mockup image to the tarot journal popup</strong> (templates in the Canva link above).</span>
+      </li>
+      <li class="check-item">
+        <input type="checkbox">
+        <span class="check-text"><strong>Audit every website page for transformation.</strong> Each page should say what changes for the client, not just what the service is. Your testimonials are working, keep them visible.</span>
+      </li>
+      <li class="check-item">
+        <input type="checkbox">
+        <span class="check-text"><strong>Cut any booking page offerings that haven't sold.</strong></span>
+      </li>
+      <li class="check-item">
+        <input type="checkbox">
+        <span class="check-text"><strong>Build The Lunar Compass Session as the signature session at the top of your booking page,</strong> with no more than two smaller sessions below it. At a glance, visitors should see why each is different and why the pricing differs.</span>
+      </li>
+      <li class="check-item">
+        <input type="checkbox">
+        <span class="check-text"><strong>Add three benefit bullets to every booking listing.</strong> Less logistics, more outcomes. Someone should immediately recognize herself.</span>
+      </li>
+      <li class="check-item">
+        <input type="checkbox">
+        <span class="check-text"><strong>Go live on schedule:</strong> 3 days a week, ~2 hours each, once astrology exams wrap.</span>
+      </li>
+      <li class="check-item">
+        <input type="checkbox">
+        <span class="check-text"><strong>Keep blogging,</strong> always written for your ideal client (grows the email list).</span>
+      </li>
+    </ul>
+    <h3>Later (Not Yet)</h3>
+    <ul class="checklist" style="opacity:.6;">
+      <li class="check-item">
+        <input type="checkbox" disabled>
+        <span class="check-text">Candle business (The Divine Manifest) stays a back-burner upsell to ritual work, no front-of-funnel energy on it yet.</span>
+      </li>
+      <li class="check-item">
+        <input type="checkbox" disabled>
+        <span class="check-text">Raise session pricing once the signature session structure and demand are established.</span>
+      </li>
+    </ul>
+  </section>
+
+  <div class="band"></div>
+
+  <!-- TIPS -->
+  <section>
+    <h2>Tips</h2>
+
+    <h3>TikTok Content</h3>
+    <ul class="tips">
+      <li><strong>Double down on proven videos.</strong> Anything over ~2,000 views, especially the 15k&ndash;20k performers: same background, same intro, same on-screen text, same music, different reading. TikTok recycles what already worked and pushes it to more people. Phase out video types that keep underperforming.</li>
+      <li><strong>Lean into full moon content.</strong> Full moons are your best-performing astrology videos. Keep making them and hashtag to match (#FullMoonInAries plus your standard set).</li>
+      <li><strong>Hashtag consistently.</strong> When copying your own winners, keep the hashtag set identical, and add the specific moon/sign tags per video.</li>
+      <li><strong>Every video gets a paid CTA.</strong> Point to something for sale (membership, session, journal) and make it obvious what's available.</li>
+    </ul>
+
+    <h3>TikTok Live</h3>
+    <ul class="tips">
+      <li><strong>Call in your ideal client during every Live.</strong> Speak directly to the woman who's too close to her situation to see it clearly. That's who converts: not the casual viewer, the one who hears herself in what you're saying.</li>
+      <li><strong>Talk freedom and boundaries on every Live.</strong> That's the core of your message: free to walk away, free to go all in, free to live on your own terms.
+        <span class="sub-note">Your line: "Guessing keeps you stuck. Knowing sets you free."</span></li>
+      <li><strong>Pitch AstroMagick with a join-now bonus.</strong> "Join in the next hour and get a bonus 30-minute mini session on your personal astrology." Keep it small and personal. It's a discovery-session play: puts people in front of you, builds the "she's my person" feeling, opens the door to deeper work. You don't need to give away $65 of value for a $10 purchase.</li>
+    </ul>
+  </section>
+
+  <div class="band"></div>
+
+  <!-- MESSAGING KIT -->
+  <section>
+    <h2>Your Messaging Kit</h2>
+    <p class="section-note">Created in this session. One promise, said the same way everywhere: too close to see it &rarr; from guessing to knowing &rarr; timing on your side &rarr; freedom.</p>
+
+    <div class="tagline">Guessing keeps you stuck.<br>Knowing sets you free.</div>
+
+    <h3>Spark Statement</h3>
+    <div class="copy-wrap">
+      <div class="copy-block">
+        <p>I work with women who are too close to their own situation to see it clearly. Through my Lunar Compass Method, they go from guessing to knowing what's really happening and when to make their move, so they can be free: free to walk away, free to go all in, free to live life on their own terms.</p>
+      </div>
+      <button class="copy-btn copy-btn-below" onclick="copyBlock(this)">Copy Spark Statement</button>
+    </div>
+    <p class="delivery-note">Short version for bios and Live intros: "My Lunar Compass Method takes you from guessing to knowing, with timing on your side."</p>
+
+    <h3>Transformation Statement</h3>
+    <div class="copy-wrap">
+      <div class="copy-block">
+        <p>Women come to me replaying the same question every night: What is he actually doing? Should I stay or go? Is this job ever going to change? They're making decisions from hope, fear, and guesswork because they're standing too close to see the pattern.</p>
+        <p>They leave a session knowing three things: what's actually happening, why the pattern keeps repeating, and when the timing favors their move. And the women who stay in my world change at a deeper level. They start catching patterns in weeks that used to take them years. They raise their standards, hold their boundaries, and trust their own judgment, until a reading stops being a lifeline and becomes a check-in.</p>
+      </div>
+      <button class="copy-btn" onclick="copyBlock(this)">Copy Transformation Statement</button>
+    </div>
+
+    <h3>The Lunar Compass Session</h3>
+    <div class="format-line">$197 &middot; 1-HOUR 1:1 ZOOM + 2 BRIEF CHECK-INS OVER THE MOON CYCLE</div>
+    <div class="copy-wrap">
+      <div class="copy-block">
+        <p><strong>For the woman who's too close to her own situation to see it clearly.</strong></p>
+        <p>Maybe it's a partner whose intentions you've been decoding for weeks. Maybe it's a job you keep circling, or a decision you've replayed so many times you can't hear your own gut anymore. You've talked it to death with your friends. You've journaled about it. You're still guessing.</p>
+        <p>This session gets you to knowing.</p>
+        <p>Using tarot and your astrology, we look at your situation from the outside, where the pattern is easy to see. You'll get a straight answer in plain language: what's really happening, why this keeps repeating, and when the timing favors your move.</p>
+        <p><strong>You'll walk away with:</strong></p>
+        <ul>
+          <li><strong>The truth about what's actually going on.</strong> Clear, direct, and in regular words. You'll finally see the situation the way it is, instead of the way you've been hoping or fearing it is.</li>
+          <li><strong>Your timing.</strong> Based on your astrology, you'll know when to act, when to wait, and when the window opens. This is the part guessing can never give you.</li>
+          <li><strong>Your action steps, delivered by voice.</strong> After your session, I record your next moves as a private audio message: what to do, what to release, and when to move. Replay it whenever you start second-guessing.</li>
+          <li><strong>A personalized ritual PDF for your intention.</strong> Built from your astrology and the outcome you're calling in, this is yours to keep: a step-by-step ritual you can return to all season.</li>
+        </ul>
+        <p>You'll leave knowing what to do, when to do it, and why it's right for you. And that's the real point of this work: when you can see clearly, you get to choose freely. Free to walk away, free to go all in, free to live on your own terms.</p>
+        <p><strong>Guessing keeps you stuck. Knowing sets you free.</strong></p>
+      </div>
+      <button class="copy-btn" onclick="copyBlock(this)">Copy Session Description</button>
+    </div>
+    <p class="delivery-note">Post-session deliverables: voice-recorded action steps + personalized ritual PDF + 2 brief check-ins over the moon cycle.</p>
+
+    <h3>AstroMagick Monthly</h3>
+    <div class="copy-wrap">
+      <div class="copy-block">
+        <p><strong>Know your month before you live it.</strong></p>
+        <p>AstroMagick is ongoing astrology guidance for $10 a month. Every week you'll know what's coming, when to make your move, and when to rest, so you can plan your life with the timing on your side.</p>
+        <p><strong>Every month you get:</strong></p>
+        <ul>
+          <li><strong>Your weekly forecast video.</strong> Short and straight to the point: what this week holds, what to expect, and when to push versus when to rest.</li>
+          <li><strong>Your Best Dates list, written out for you.</strong> The strongest dates of the month for love, money, and big decisions, in a simple written list you can screenshot and schedule around. This alone pays for the month the first time you use it.</li>
+          <li><strong>New Moon and Full Moon rituals.</strong> Set your intention when the moon is new. Release what's finished when it's full.</li>
+          <li><strong>The private Discord community.</strong> Ask your questions, get context when a week feels heavy, and plan alongside women who live by their timing too.</li>
+        </ul>
+        <p>Four weekly forecasts, your best dates, two moon rituals, and a community that gets it. That's a timing plan for every week of your life, for ten dollars a month.</p>
+        <p>And it compounds. A few months in, you'll catch patterns sooner, plan ahead of your weeks, and trust your own read on your life.</p>
+        <p><strong>Guessing keeps you stuck. Knowing sets you free.</strong></p>
+      </div>
+      <button class="copy-btn" onclick="copyBlock(this)">Copy Membership Description</button>
+    </div>
+  </section>
+
+  <div class="band"></div>
+
+  <!-- IDEAL CLIENT -->
+  <section>
+    <h2>Your Ideal Client</h2>
+    <div class="copy-wrap">
+    <div class="card">
+      <p><strong style="color: var(--tx-strong);">She's a woman in her late 20s to 40s who is too close to her own situation to see it straight.</strong> Most nights it's a relationship question: a partner whose intentions she can't read, a situationship she keeps hoping will become more, mixed signals she's been decoding with her friends for weeks. Sometimes it's career: a difficult boss, a move she keeps circling, a side hustle she wants to turn into real financial freedom.</p>
+      <p style="margin-top: 14px;">She's smart and self-aware. She's already journaled about it, talked it to death, and Googled his zodiac sign at 1am. She wants a straight answer in plain language and a clear next move from someone who will tell her the truth. Zero patience for theatrics, doom predictions, or readers who keep her coming back scared.</p>
+      <p style="margin-top: 14px;"><strong style="color: var(--gold);">Her core desire is freedom:</strong> financial freedom, time freedom, freedom from looping thoughts, freedom from staying in relationships that aren't healthy.</p>
+    </div>
+    <button class="copy-btn copy-btn-below" onclick="copyCard(this)">Copy Ideal Client</button>
+    </div>
+  </section>
+
+  <!-- OFFERS & GOALS -->
+  <section>
+    <h2>Offers &amp; Goals</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Offer</th><th>Price</th><th>Details</th></tr></thead>
+        <tbody>
+          <tr><td>AstroMagick Monthly</td><td>$10/mo</td><td>Priority #1, one-to-many; goal 300 members = $3,000 MRR</td></tr>
+          <tr><td>The Lunar Compass Session</td><td>$197</td><td>1-hr 1:1 Zoom + 2 brief check-ins over the moon cycle</td></tr>
+          <tr><td>Smaller readings (max 2)</td><td>~$35 avg</td><td>Goal ~10 bookings/week</td></tr>
+          <tr><td>Tarot journal</td><td>Free</td><td>Email list builder (~460 subscribers, grows with blogging)</td></tr>
+          <tr><td>The Divine Manifest candles</td><td>Varies</td><td>Back-burner upsell to ritual work, no front-of-funnel energy yet</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="section-note" style="margin-top: 10px;">6&ndash;12 month income goal: ~$4,400&ndash;$4,500/mo from memberships + readings, before candles and higher-priced astrology work.</p>
+  </section>
+
+  <!-- NOTES -->
+  <section>
+    <h2>Notes from the Call</h2>
+    <div class="card">
+      <ul class="plain">
+        <li>Live schedule starts in earnest once astrology exams wrap.</li>
+        <li>Funnel: TikTok viewer &rarr; Live reading &rarr; paid TikTok community &rarr; AstroMagick &rarr; signature session &rarr; repeat sessions.</li>
+        <li>The 10% Live-viewer conversion goal is ambitious for cold traffic. Watch the real number and adjust.</li>
+        <li>Long-term positioning: become <em>their</em> person, the one they go to for support and transformation. Lead with the relationship and the results, not the modalities.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="moon-mark">&#9789; &#10022; &#9790;</div>
+    <p>Tiger Eye Oracle &middot; Action Plan from your session with Sunny &middot; Soul-Forged Founders</p>
+  </footer>
+
+</div>
+
+<script>
+function copyBlock(btn) {
+  var block = btn.parentElement.querySelector('.copy-block');
+  var text = block.innerText.replace(/✦\s*/g, '').trim();
+  var label = btn.textContent;
+  navigator.clipboard.writeText(text).then(function() {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.textContent = label;
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+function copyCard(btn) {
+  var card = btn.parentElement.querySelector('.card');
+  var text = card.innerText.trim();
+  var label = btn.textContent;
+  navigator.clipboard.writeText(text).then(function() {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.textContent = label;
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>
